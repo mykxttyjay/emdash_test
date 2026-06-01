@@ -2,6 +2,10 @@
 
 A modern electrician website built with Astro, featuring Emdash CMS for content management, Turso database, and deployed on Vercel.
 
+## 🚀 Deployment Status
+
+This project is configured for automatic deployment on Vercel. Every push to the `main` branch triggers a new deployment.
+
 ## ✨ Features
 
 - 🎨 Modern, responsive design with Tailwind CSS
