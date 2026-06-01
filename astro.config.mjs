@@ -68,7 +68,6 @@ export default defineConfig({
         (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined),
       database,
       storage,
-      seed: '.emdash/seed.json',
       schema: {
         collections: {
           site_settings: {
