@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/sections/Header.astro';
+import Hero2 from '../components/sections/Hero2.astro';
+import ServiceDetailSection from '../components/sections/ServiceDetailSection.astro';
+import Location from '../components/sections/Location.astro';
+import CallToAction from '../components/sections/CallToAction.astro';
+import WhyChooseUs from '../components/sections/WhyChooseUs.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import Footer from '../components/sections/Footer.astro';
+import FloatingOffer from '../components/sections/FloatingOffer.astro';
+import FloatingSideButtons from '../components/sections/FloatingSideButtons.astro';
+import OfferModal from '../components/sections/OfferModal.astro';
+import Coupons from '../components/sections/Coupons.astro';
+
+// Use the same service data from Services.astro - Commercial Electrical category
+const commercialServiceCards = [
+  { 
+    name: 'Ground-up Construction', 
+    image: 'https://images.unsplash.com/photo-1702128411190-5061e7756d5c?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    description: 'Complete electrical infrastructure for new construction projects from foundation to finish.', 
+    icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/%3E%3C/svg%3E', 
+    link: '/ground-up-construction',
+    detailedDescription: 'Complete electrical infrastructure for new commercial construction projects. From initial design to final installation, we expertly handle all critical aspects of electrical systems for your building.',
+    features: [
+      'Full electrical system design & planning',
+      'Power distribution & panel installation',
+      'Code-compliant wiring & conduit systems',
+      'Coordination with general contractors'
+    ]
+  },
+  { 
+    name: 'Emergency & Standby Power', 
+    image: 'https://images.unsplash.com/photo-1715962131558-63e9ef5fb79f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    description: 'Reliable backup power systems to keep your business running during outages.', 
+    icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24"%3E%3Cpath d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/%3E%3C/svg%3E',
+    detailedDescription: 'Reliable backup power solutions to keep your business running smoothly during outages. Professional generator installation, maintenance, and automatic transfer switch systems.',
+    features: [
+      'Generator installation & maintenance',
+      'Automatic transfer switch systems',
+      'Load calculation & sizing',
+      'Emergency power testing & certification'
+    ]
+  },
+  { 
+    name: 'Commercial HVAC', 
+    image: 'https://images.unsplash.com/photo-1770838773181-e1b17ec22fee?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    description: 'Expert electrical services for heating, ventilation, and air conditioning systems.', 
+    icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/%3E%3C/svg%3E',
+    detailedDescription: 'Expert electrical services for commercial heating, ventilation, and air conditioning systems. Professional installation and maintenance for optimal performance and energy efficiency.',
+    features: [
+      'HVAC unit electrical connections',
+      'Control system wiring & programming',
+      'Energy-efficient system upgrades',
+      'Preventive maintenance programs'
+    ]
+  },
+  { 
+    name: 'Commercial Panels', 
+    image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    description: 'Professional installation and upgrades for commercial electrical panel systems.', 
+    icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/%3E%3C/svg%3E',
+    detailedDescription: 'Professional panel upgrades and installations to meet your growing business power demands. Ensure safety and maximum efficiency with modern, reliable electrical distribution systems.',
+    features: [
+      'Panel upgrades & replacements',
+      'Circuit breaker installation',
+      'Load balancing & optimization',
+      'Safety inspections & code compliance'
+    ]
+  }
+];
+
+const heroData = {
+  backgroundImage: "https://images.unsplash.com/photo-1509390144018-eeaf65052242?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  title: "Commercial Electrical Services",
+  titleSize: "heading-h2"
+};
+
+const serviceCategories = [
+  { name: 'Commercial Electrical', link: '/commercial-electrical' },
+  { name: 'Residential Electrical', link: '#' },
+  { name: 'Specialty Services', link: '#' },
+  { name: 'Emergency Services', link: '#' }
+];
+
+const serviceDetailData = {
+  image: "https://images.unsplash.com/photo-1543333101-840e043d2a7d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  imageAlt: "Commercial Electrical Services",
+  title: "Commercial Electrical",
+  description: "We provide comprehensive electrical services for businesses of all sizes, from simple repairs to complex installations. Our experienced team ensures minimal disruption while delivering safe, reliable, code-compliant solutions."
+};
+
+const allServiceData = {
+  'Commercial Electrical': {
+    title: serviceDetailData.title,
+    description: serviceDetailData.description,
+    cards: commercialServiceCards
+  },
+};
+---
+
+<Layout 
+  title="Commercial Electrical Services" 
+>
+  <Header />
+  
+  <Hero2 
+    backgroundImage={heroData.backgroundImage}
+    title={heroData.title}
+    titleSize={heroData.titleSize}
+  />
+
+  <ServiceDetailSection 
+    image={serviceDetailData.image}
+    imageAlt={serviceDetailData.imageAlt}
+    title={serviceDetailData.title}
+    description={serviceDetailData.description}
+    services={serviceCategories}
+    serviceCards={allServiceData['Commercial Electrical'].cards}
+    allServiceData={allServiceData}
+  />
+
+  <WhyChooseUs />
+  <Coupons />
+  <Testimonials />
+  <FAQ />
+  <Location />
+  <CallToAction />
+  <Footer />
+  <FloatingOffer />
+  <FloatingSideButtons showOnScroll={true} triggerSection="why-choose-us" />
+  <OfferModal />
+</Layout>

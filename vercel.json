@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm run build",
+  "framework": "astro",
+  "env": {
+    "TURSO_DATABASE_URL": "@turso_database_url",
+    "TURSO_AUTH_TOKEN": "@turso_auth_token",
+    "EMDASH_SECRET": "@emdash_secret"
+  }
+}

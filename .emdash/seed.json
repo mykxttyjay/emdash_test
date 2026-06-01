@@ -1,0 +1,773 @@
+{
+  "version": "1",
+  "meta": {
+    "name": "Electrixa - Electrician Website",
+    "description": "Professional electrical services CMS schema",
+    "author": "Electrixa"
+  },
+  "settings": {
+    "title": "Electrixa",
+    "tagline": "Professional Electrical Services"
+  },
+  "collections": [
+    {
+      "slug": "site_settings",
+      "label": "Site Settings",
+      "labelSingular": "Site Settings",
+      "singleton": true,
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "site_name", "label": "Site Name", "type": "string", "required": true },
+        { "slug": "tagline", "label": "Tagline", "type": "string" },
+        { "slug": "logo", "label": "Logo", "type": "image" },
+        { "slug": "phone", "label": "Phone Number", "type": "string", "required": true },
+        { "slug": "email", "label": "Email Address", "type": "string", "required": true },
+        { "slug": "address", "label": "Business Address", "type": "text" },
+        { "slug": "business_hours", "label": "Business Hours", "type": "text" },
+        { "slug": "emergency_phone", "label": "24/7 Emergency Phone", "type": "string" },
+        { "slug": "license_number", "label": "License Number", "type": "string" },
+        { "slug": "facebook_url", "label": "Facebook URL", "type": "string" },
+        { "slug": "instagram_url", "label": "Instagram URL", "type": "string" },
+        { "slug": "linkedin_url", "label": "LinkedIn URL", "type": "string" },
+        { "slug": "twitter_url", "label": "Twitter URL", "type": "string" },
+        { "slug": "yelp_url", "label": "Yelp URL", "type": "string" },
+        { "slug": "meta_title", "label": "Meta Title", "type": "string" },
+        { "slug": "meta_description", "label": "Meta Description", "type": "text" },
+        { "slug": "cta_text", "label": "Primary CTA Text", "type": "string" },
+        { "slug": "cta_phone", "label": "CTA Phone Number", "type": "string" }
+      ]
+    },
+    {
+      "slug": "services",
+      "label": "Services",
+      "labelSingular": "Service",
+      "supports": ["drafts", "revisions", "search"],
+      "fields": [
+        { "slug": "title", "label": "Service Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "slug", "label": "URL Slug", "type": "string", "required": true },
+        { "slug": "short_description", "label": "Short Description", "type": "text", "required": true },
+        { "slug": "full_description", "label": "Full Description", "type": "richtext" },
+        { "slug": "icon", "label": "Icon Name", "type": "string" },
+        { "slug": "featured_image", "label": "Featured Image", "type": "image" },
+        { "slug": "price", "label": "Starting Price", "type": "string" },
+        { "slug": "features", "label": "Key Features", "type": "json" },
+        { "slug": "category", "label": "Service Category", "type": "string", "required": true },
+        { "slug": "is_popular", "label": "Popular Service", "type": "boolean" },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    },
+    {
+      "slug": "testimonials",
+      "label": "Testimonials",
+      "labelSingular": "Testimonial",
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "customer_name", "label": "Customer Name", "type": "string", "required": true },
+        { "slug": "rating", "label": "Rating (1-5)", "type": "number", "required": true },
+        { "slug": "testimonial_text", "label": "Testimonial", "type": "text", "required": true },
+        { "slug": "location", "label": "Location", "type": "string" },
+        { "slug": "service_type", "label": "Service Received", "type": "string" },
+        { "slug": "date", "label": "Date", "type": "string" },
+        { "slug": "is_verified", "label": "Verified Review", "type": "boolean" },
+        { "slug": "is_featured", "label": "Feature on Homepage", "type": "boolean" },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    },
+    {
+      "slug": "portfolio",
+      "label": "Portfolio",
+      "labelSingular": "Portfolio Project",
+      "supports": ["drafts", "revisions", "search"],
+      "fields": [
+        { "slug": "title", "label": "Project Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "slug", "label": "URL Slug", "type": "string", "required": true },
+        { "slug": "description", "label": "Project Description", "type": "text", "required": true },
+        { "slug": "full_description", "label": "Full Project Details", "type": "richtext" },
+        { "slug": "featured_image", "label": "Featured Image", "type": "image", "required": true },
+        { "slug": "category", "label": "Project Category", "type": "string", "required": true },
+        { "slug": "location", "label": "Project Location", "type": "string" },
+        { "slug": "completed_date", "label": "Completion Date", "type": "string" },
+        { "slug": "client", "label": "Client Name", "type": "string" },
+        { "slug": "project_scope", "label": "Project Scope", "type": "json" },
+        { "slug": "is_featured", "label": "Feature on Homepage", "type": "boolean" },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    },
+    {
+      "slug": "faqs",
+      "label": "FAQs",
+      "labelSingular": "FAQ",
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "question", "label": "Question", "type": "string", "required": true },
+        { "slug": "answer", "label": "Answer", "type": "richtext", "required": true },
+        { "slug": "category", "label": "FAQ Category", "type": "string" },
+        { "slug": "is_popular", "label": "Popular Question", "type": "boolean" },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    },
+    {
+      "slug": "coupons",
+      "label": "Coupons",
+      "labelSingular": "Coupon",
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "title", "label": "Coupon Title", "type": "string", "required": true },
+        { "slug": "description", "label": "Description", "type": "text", "required": true },
+        { "slug": "discount_amount", "label": "Discount", "type": "string", "required": true },
+        { "slug": "code", "label": "Coupon Code", "type": "string" },
+        { "slug": "valid_from", "label": "Valid From", "type": "string" },
+        { "slug": "valid_until", "label": "Valid Until", "type": "string" },
+        { "slug": "terms", "label": "Terms & Conditions", "type": "text" },
+        { "slug": "is_active", "label": "Active", "type": "boolean", "required": true },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    },
+    {
+      "slug": "locations",
+      "label": "Locations",
+      "labelSingular": "Location",
+      "supports": ["drafts", "revisions"],
+      "fields": [
+        { "slug": "name", "label": "Location Name", "type": "string", "required": true },
+        { "slug": "slug", "label": "URL Slug", "type": "string", "required": true },
+        { "slug": "description", "label": "Location Description", "type": "richtext", "required": true },
+        { "slug": "address", "label": "Full Address", "type": "text" },
+        { "slug": "phone", "label": "Phone Number", "type": "string" },
+        { "slug": "email", "label": "Email", "type": "string" },
+        { "slug": "service_area", "label": "Service Area Description", "type": "text" },
+        { "slug": "map_embed_url", "label": "Google Maps Embed URL", "type": "string" },
+        { "slug": "featured_image", "label": "Location Image", "type": "image" },
+        { "slug": "services_offered", "label": "Services Offered", "type": "json" },
+        { "slug": "why_choose_us", "label": "Why Choose Us Points", "type": "json" },
+        { "slug": "is_active", "label": "Active Location", "type": "boolean" }
+      ]
+    },
+    {
+      "slug": "team",
+      "label": "Team Members",
+      "labelSingular": "Team Member",
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "name", "label": "Full Name", "type": "string", "required": true },
+        { "slug": "position", "label": "Position/Title", "type": "string", "required": true },
+        { "slug": "bio", "label": "Biography", "type": "text" },
+        { "slug": "photo", "label": "Photo", "type": "image" },
+        { "slug": "certifications", "label": "Certifications", "type": "json" },
+        { "slug": "years_experience", "label": "Years of Experience", "type": "number" },
+        { "slug": "specialties", "label": "Specialties", "type": "json" },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    },
+    {
+      "slug": "stats",
+      "label": "Stats",
+      "labelSingular": "Stat",
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "label", "label": "Stat Label", "type": "string", "required": true },
+        { "slug": "value", "label": "Stat Value", "type": "string", "required": true },
+        { "slug": "suffix", "label": "Suffix", "type": "string" },
+        { "slug": "icon", "label": "Icon Name", "type": "string" },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    },
+    {
+      "slug": "maintenance_plans",
+      "label": "Maintenance Plans",
+      "labelSingular": "Maintenance Plan",
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "name", "label": "Plan Name", "type": "string", "required": true },
+        { "slug": "price", "label": "Price", "type": "string", "required": true },
+        { "slug": "description", "label": "Plan Description", "type": "text" },
+        { "slug": "features", "label": "Features Included", "type": "json", "required": true },
+        { "slug": "is_popular", "label": "Most Popular", "type": "boolean" },
+        { "slug": "button_text", "label": "Button Text", "type": "string" },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    },
+    {
+      "slug": "hero_sections",
+      "label": "Hero Sections",
+      "labelSingular": "Hero Section",
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "title", "label": "Hero Title", "type": "string", "required": true },
+        { "slug": "subtitle", "label": "Subtitle", "type": "string" },
+        { "slug": "description", "label": "Description", "type": "text" },
+        { "slug": "background_image", "label": "Background Image", "type": "image" },
+        { "slug": "primary_button_text", "label": "Primary Button Text", "type": "string" },
+        { "slug": "primary_button_link", "label": "Primary Button Link", "type": "string" },
+        { "slug": "secondary_button_text", "label": "Secondary Button Text", "type": "string" },
+        { "slug": "secondary_button_link", "label": "Secondary Button Link", "type": "string" },
+        { "slug": "features", "label": "Key Features", "type": "json" },
+        { "slug": "page", "label": "Display on Page", "type": "string", "required": true }
+      ]
+    },
+    {
+      "slug": "cta_sections",
+      "label": "CTA Sections",
+      "labelSingular": "CTA Section",
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "title", "label": "CTA Title", "type": "string", "required": true },
+        { "slug": "description", "label": "Description", "type": "text" },
+        { "slug": "button_text", "label": "Button Text", "type": "string", "required": true },
+        { "slug": "button_link", "label": "Button Link", "type": "string" },
+        { "slug": "phone_number", "label": "Phone Number", "type": "string" },
+        { "slug": "background_image", "label": "Background Image", "type": "image" },
+        { "slug": "style", "label": "CTA Style", "type": "string" },
+        { "slug": "page", "label": "Display on Page", "type": "string" },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    },
+    {
+      "slug": "process_steps",
+      "label": "Process Steps",
+      "labelSingular": "Process Step",
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "step_number", "label": "Step Number", "type": "number", "required": true },
+        { "slug": "title", "label": "Step Title", "type": "string", "required": true },
+        { "slug": "description", "label": "Step Description", "type": "text", "required": true },
+        { "slug": "icon", "label": "Icon Name", "type": "string" },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    },
+    {
+      "slug": "financing_options",
+      "label": "Financing Options",
+      "labelSingular": "Financing Option",
+      "supports": ["drafts"],
+      "fields": [
+        { "slug": "name", "label": "Financing Option Name", "type": "string", "required": true },
+        { "slug": "description", "label": "Description", "type": "text", "required": true },
+        { "slug": "features", "label": "Features", "type": "json" },
+        { "slug": "apr", "label": "APR", "type": "string" },
+        { "slug": "terms", "label": "Terms & Conditions", "type": "text" },
+        { "slug": "logo", "label": "Provider Logo", "type": "image" },
+        { "slug": "apply_url", "label": "Application URL", "type": "string" },
+        { "slug": "is_active", "label": "Active", "type": "boolean", "required": true },
+        { "slug": "display_order", "label": "Display Order", "type": "number" }
+      ]
+    }
+
+  ],
+  "content": {
+    "site_settings": [
+      {
+        "id": "site-settings-main",
+        "slug": "main",
+        "status": "published",
+        "data": {
+          "site_name": "Electrixa",
+          "tagline": "Professional Electrical Services You Can Trust",
+          "phone": "(310) 555-0123",
+          "email": "info@electrixa.com",
+          "address": "123 Electric Ave, Santa Monica, CA 90401",
+          "business_hours": "Monday - Friday: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 4:00 PM\nSunday: Emergency Service Only",
+          "emergency_phone": "(310) 555-9999",
+          "license_number": "C-10 #123456",
+          "facebook_url": "https://facebook.com/electrixa",
+          "instagram_url": "https://instagram.com/electrixa",
+          "linkedin_url": "https://linkedin.com/company/electrixa",
+          "twitter_url": "https://twitter.com/electrixa",
+          "yelp_url": "https://yelp.com/biz/electrixa",
+          "meta_title": "Electrixa - Professional Electrical Services in Santa Monica",
+          "meta_description": "Licensed and insured electrical contractors serving Santa Monica and surrounding areas. 24/7 emergency service available.",
+          "cta_text": "Get Free Quote",
+          "cta_phone": "(310) 555-0123"
+        }
+      }
+    ],
+    "services": [
+      {
+        "id": "service-residential",
+        "slug": "residential-electrical",
+        "status": "published",
+        "data": {
+          "title": "Residential Electrical Services",
+          "slug": "residential-electrical",
+          "short_description": "Complete electrical solutions for your home, from repairs to full rewiring.",
+          "full_description": "<p>Our residential electrical services cover everything from simple repairs to complete home rewiring. We ensure your home's electrical system is safe, efficient, and up to code.</p>",
+          "icon": "home",
+          "price": "Starting at $150",
+          "features": ["Panel Upgrades", "Outlet Installation", "Lighting Design", "Home Rewiring", "Safety Inspections"],
+          "category": "Residential",
+          "is_popular": true,
+          "display_order": 1
+        }
+      },
+      {
+        "id": "service-commercial",
+        "slug": "commercial-electrical",
+        "status": "published",
+        "data": {
+          "title": "Commercial Electrical Services",
+          "slug": "commercial-electrical",
+          "short_description": "Professional electrical services for businesses and commercial properties.",
+          "full_description": "<p>Keep your business running smoothly with our comprehensive commercial electrical services. We minimize downtime and ensure code compliance.</p>",
+          "icon": "building",
+          "price": "Contact for Quote",
+          "features": ["Office Wiring", "Emergency Lighting", "Data Cabling", "Parking Lot Lighting", "Tenant Improvements"],
+          "category": "Commercial",
+          "is_popular": true,
+          "display_order": 2
+        }
+      },
+      {
+        "id": "service-emergency",
+        "slug": "emergency-electrical",
+        "status": "published",
+        "data": {
+          "title": "24/7 Emergency Service",
+          "slug": "emergency-electrical",
+          "short_description": "Round-the-clock emergency electrical services when you need them most.",
+          "full_description": "<p>Electrical emergencies don't wait for business hours. Our 24/7 emergency service ensures you're never left in the dark.</p>",
+          "icon": "bolt",
+          "price": "Call for Emergency Service",
+          "features": ["Power Outages", "Electrical Fires", "Sparking Outlets", "Circuit Breaker Issues", "Storm Damage"],
+          "category": "Emergency",
+          "is_popular": true,
+          "display_order": 3
+        }
+      }
+    ],
+    "testimonials": [
+      {
+        "id": "testimonial-1",
+        "slug": "john-smith",
+        "status": "published",
+        "data": {
+          "customer_name": "John Smith",
+          "rating": 5,
+          "testimonial_text": "Electrixa did an amazing job upgrading our electrical panel. Professional, punctual, and reasonably priced. Highly recommend!",
+          "location": "Santa Monica, CA",
+          "service_type": "Panel Upgrade",
+          "date": "2026-05-15",
+          "is_verified": true,
+          "is_featured": true,
+          "display_order": 1
+        }
+      },
+      {
+        "id": "testimonial-2",
+        "slug": "sarah-johnson",
+        "status": "published",
+        "data": {
+          "customer_name": "Sarah Johnson",
+          "rating": 5,
+          "testimonial_text": "Quick response to our emergency call. The technician was knowledgeable and fixed our electrical issue within an hour. Great service!",
+          "location": "Venice, CA",
+          "service_type": "Emergency Repair",
+          "date": "2026-05-20",
+          "is_verified": true,
+          "is_featured": true,
+          "display_order": 2
+        }
+      },
+      {
+        "id": "testimonial-3",
+        "slug": "mike-davis",
+        "status": "published",
+        "data": {
+          "customer_name": "Mike Davis",
+          "rating": 5,
+          "testimonial_text": "Excellent work on our commercial property. They completed the project on time and within budget. Very professional team.",
+          "location": "Culver City, CA",
+          "service_type": "Commercial Wiring",
+          "date": "2026-04-28",
+          "is_verified": true,
+          "is_featured": true,
+          "display_order": 3
+        }
+      }
+    ],
+    "portfolio": [
+      {
+        "id": "portfolio-1",
+        "slug": "modern-home-rewiring",
+        "status": "published",
+        "data": {
+          "title": "Modern Home Complete Rewiring",
+          "slug": "modern-home-rewiring",
+          "description": "Complete electrical rewiring of a 3,500 sq ft modern home in Santa Monica.",
+          "full_description": "<p>This project involved completely rewiring a beautiful modern home while preserving the aesthetic integrity of the space.</p>",
+          "category": "Residential",
+          "location": "Santa Monica, CA",
+          "completed_date": "2026-04-15",
+          "client": "Private Residence",
+          "project_scope": ["Complete home rewiring", "Smart home integration", "LED lighting installation", "Panel upgrade"],
+          "is_featured": true,
+          "display_order": 1
+        }
+      },
+      {
+        "id": "portfolio-2",
+        "slug": "office-building-upgrade",
+        "status": "published",
+        "data": {
+          "title": "Office Building Electrical Upgrade",
+          "slug": "office-building-upgrade",
+          "description": "Comprehensive electrical system upgrade for a 10,000 sq ft office building.",
+          "full_description": "<p>Modernized the entire electrical infrastructure of a commercial office building to support modern technology needs.</p>",
+          "category": "Commercial",
+          "location": "Culver City, CA",
+          "completed_date": "2026-03-20",
+          "client": "Tech Startup Inc.",
+          "project_scope": ["Electrical panel upgrade", "Data cabling", "Emergency lighting", "Energy-efficient lighting"],
+          "is_featured": true,
+          "display_order": 2
+        }
+      }
+    ],
+    "faqs": [
+      {
+        "id": "faq-1",
+        "slug": "how-much-does-electrical-work-cost",
+        "status": "published",
+        "data": {
+          "question": "How much does electrical work typically cost?",
+          "answer": "<p>Costs vary depending on the scope of work. Simple repairs start at $150, while larger projects like panel upgrades or rewiring are quoted individually. We provide free estimates for all projects.</p>",
+          "category": "Pricing",
+          "is_popular": true,
+          "display_order": 1
+        }
+      },
+      {
+        "id": "faq-2",
+        "slug": "do-you-offer-emergency-service",
+        "status": "published",
+        "data": {
+          "question": "Do you offer 24/7 emergency service?",
+          "answer": "<p>Yes! We provide 24/7 emergency electrical service. Call our emergency line at (310) 555-9999 anytime, day or night.</p>",
+          "category": "Emergency",
+          "is_popular": true,
+          "display_order": 2
+        }
+      },
+      {
+        "id": "faq-3",
+        "slug": "are-you-licensed-and-insured",
+        "status": "published",
+        "data": {
+          "question": "Are you licensed and insured?",
+          "answer": "<p>Absolutely! We are fully licensed (C-10 #123456) and insured. All our electricians are certified professionals with years of experience.</p>",
+          "category": "General",
+          "is_popular": true,
+          "display_order": 3
+        }
+      }
+    ],
+    "coupons": [
+      {
+        "id": "coupon-1",
+        "slug": "new-customer-discount",
+        "status": "published",
+        "data": {
+          "title": "$50 OFF First Service",
+          "description": "New customers save $50 on their first electrical service call.",
+          "discount_amount": "$50 OFF",
+          "code": "NEW50",
+          "valid_from": "2026-01-01",
+          "valid_until": "2026-12-31",
+          "terms": "Valid for new customers only. Minimum service charge of $200. Cannot be combined with other offers.",
+          "is_active": true,
+          "display_order": 1
+        }
+      },
+      {
+        "id": "coupon-2",
+        "slug": "panel-upgrade-special",
+        "status": "published",
+        "data": {
+          "title": "Panel Upgrade Special",
+          "description": "Save 15% on electrical panel upgrades this month.",
+          "discount_amount": "15% OFF",
+          "code": "PANEL15",
+          "valid_from": "2026-06-01",
+          "valid_until": "2026-06-30",
+          "terms": "Valid for panel upgrade services only. Cannot be combined with other offers.",
+          "is_active": true,
+          "display_order": 2
+        }
+      }
+    ],
+    "locations": [
+      {
+        "id": "location-santa-monica",
+        "slug": "santa-monica",
+        "status": "published",
+        "data": {
+          "name": "Santa Monica",
+          "slug": "santa-monica",
+          "description": "<p>Proudly serving Santa Monica and surrounding areas with professional electrical services. Our local team knows the area and is ready to help.</p>",
+          "address": "123 Electric Ave, Santa Monica, CA 90401",
+          "phone": "(310) 555-0123",
+          "email": "santamonica@electrixa.com",
+          "service_area": "We serve Santa Monica, Venice, Marina del Rey, and surrounding West LA communities.",
+          "services_offered": ["Residential Electrical", "Commercial Electrical", "Emergency Service", "Panel Upgrades", "Lighting Installation"],
+          "why_choose_us": ["Licensed & Insured", "24/7 Emergency Service", "Free Estimates", "Experienced Technicians", "Satisfaction Guaranteed"],
+          "is_active": true
+        }
+      }
+    ],
+    "team": [
+      {
+        "id": "team-1",
+        "slug": "john-electrician",
+        "status": "published",
+        "data": {
+          "name": "John Martinez",
+          "position": "Master Electrician",
+          "bio": "With over 15 years of experience, John leads our team with expertise in both residential and commercial electrical work.",
+          "certifications": ["Master Electrician License", "OSHA Certified", "Arc Flash Safety"],
+          "years_experience": 15,
+          "specialties": ["Panel Upgrades", "Commercial Wiring", "Code Compliance"],
+          "display_order": 1
+        }
+      },
+      {
+        "id": "team-2",
+        "slug": "sarah-electrician",
+        "status": "published",
+        "data": {
+          "name": "Sarah Chen",
+          "position": "Licensed Electrician",
+          "bio": "Sarah specializes in residential electrical work and smart home installations. She's known for her attention to detail and customer service.",
+          "certifications": ["Journeyman Electrician", "Smart Home Specialist", "Energy Efficiency Certified"],
+          "years_experience": 8,
+          "specialties": ["Smart Home Integration", "Lighting Design", "Energy Efficiency"],
+          "display_order": 2
+        }
+      }
+    ],
+    "stats": [
+      {
+        "id": "stat-1",
+        "slug": "projects-completed",
+        "status": "published",
+        "data": {
+          "label": "Projects Completed",
+          "value": "500",
+          "suffix": "+",
+          "icon": "check-circle",
+          "display_order": 1
+        }
+      },
+      {
+        "id": "stat-2",
+        "slug": "years-experience",
+        "status": "published",
+        "data": {
+          "label": "Years Experience",
+          "value": "25",
+          "suffix": "+",
+          "icon": "calendar",
+          "display_order": 2
+        }
+      },
+      {
+        "id": "stat-3",
+        "slug": "happy-customers",
+        "status": "published",
+        "data": {
+          "label": "Happy Customers",
+          "value": "1000",
+          "suffix": "+",
+          "icon": "users",
+          "display_order": 3
+        }
+      },
+      {
+        "id": "stat-4",
+        "slug": "satisfaction-rate",
+        "status": "published",
+        "data": {
+          "label": "Satisfaction Rate",
+          "value": "99",
+          "suffix": "%",
+          "icon": "star",
+          "display_order": 4
+        }
+      }
+    ],
+    "maintenance_plans": [
+      {
+        "id": "plan-basic",
+        "slug": "basic-plan",
+        "status": "published",
+        "data": {
+          "name": "Basic Plan",
+          "price": "$199/year",
+          "description": "Essential electrical maintenance for your home or business.",
+          "features": ["Annual Safety Inspection", "Priority Scheduling", "10% Discount on Repairs", "Emergency Service Available"],
+          "is_popular": false,
+          "button_text": "Get Started",
+          "display_order": 1
+        }
+      },
+      {
+        "id": "plan-premium",
+        "slug": "premium-plan",
+        "status": "published",
+        "data": {
+          "name": "Premium Plan",
+          "price": "$399/year",
+          "description": "Comprehensive electrical maintenance and priority service.",
+          "features": ["Bi-Annual Safety Inspections", "Priority Emergency Service", "20% Discount on Repairs", "Free Outlet Testing", "Smoke Detector Check"],
+          "is_popular": true,
+          "button_text": "Most Popular",
+          "display_order": 2
+        }
+      },
+      {
+        "id": "plan-enterprise",
+        "slug": "enterprise-plan",
+        "status": "published",
+        "data": {
+          "name": "Enterprise Plan",
+          "price": "Custom Pricing",
+          "description": "Complete electrical care for commercial properties.",
+          "features": ["Quarterly Inspections", "24/7 Priority Service", "25% Discount on All Work", "Preventive Maintenance", "Dedicated Account Manager", "Custom Service Agreement"],
+          "is_popular": false,
+          "button_text": "Contact Us",
+          "display_order": 3
+        }
+      }
+    ],
+    "hero_sections": [
+      {
+        "id": "hero-home",
+        "slug": "home-hero",
+        "status": "published",
+        "data": {
+          "title": "Professional Electrical Services You Can Trust",
+          "subtitle": "Licensed, Insured & Available 24/7",
+          "description": "Expert electrical solutions for residential and commercial properties in Santa Monica and surrounding areas.",
+          "primary_button_text": "Get Free Quote",
+          "primary_button_link": "/contact",
+          "secondary_button_text": "Our Services",
+          "secondary_button_link": "/services",
+          "features": ["Licensed & Insured", "24/7 Emergency Service", "Free Estimates", "Satisfaction Guaranteed"],
+          "page": "Home"
+        }
+      }
+    ],
+    "cta_sections": [
+      {
+        "id": "cta-emergency",
+        "slug": "emergency-cta",
+        "status": "published",
+        "data": {
+          "title": "Need Emergency Electrical Service?",
+          "description": "We're available 24/7 for all your electrical emergencies. Don't wait - call now!",
+          "button_text": "Call Now",
+          "button_link": "tel:3105559999",
+          "phone_number": "(310) 555-9999",
+          "style": "Banner",
+          "page": "All Pages",
+          "display_order": 1
+        }
+      },
+      {
+        "id": "cta-quote",
+        "slug": "quote-cta",
+        "status": "published",
+        "data": {
+          "title": "Ready to Get Started?",
+          "description": "Contact us today for a free estimate on your electrical project.",
+          "button_text": "Get Free Quote",
+          "button_link": "/contact",
+          "phone_number": "(310) 555-0123",
+          "style": "Card",
+          "page": "Services",
+          "display_order": 2
+        }
+      }
+    ],
+    "process_steps": [
+      {
+        "id": "step-1",
+        "slug": "contact-us",
+        "status": "published",
+        "data": {
+          "step_number": 1,
+          "title": "Contact Us",
+          "description": "Call or fill out our online form to schedule a consultation. We'll discuss your electrical needs and set up a convenient time.",
+          "icon": "phone",
+          "display_order": 1
+        }
+      },
+      {
+        "id": "step-2",
+        "slug": "inspection",
+        "status": "published",
+        "data": {
+          "step_number": 2,
+          "title": "Inspection & Quote",
+          "description": "Our licensed electrician will inspect your property and provide a detailed, transparent quote with no hidden fees.",
+          "icon": "clipboard-check",
+          "display_order": 2
+        }
+      },
+      {
+        "id": "step-3",
+        "slug": "schedule",
+        "status": "published",
+        "data": {
+          "step_number": 3,
+          "title": "Schedule Service",
+          "description": "Once you approve the quote, we'll schedule the work at a time that's convenient for you.",
+          "icon": "calendar",
+          "display_order": 3
+        }
+      },
+      {
+        "id": "step-4",
+        "slug": "complete",
+        "status": "published",
+        "data": {
+          "step_number": 4,
+          "title": "Complete & Verify",
+          "description": "We complete the work to the highest standards, clean up, and ensure you're 100% satisfied with the results.",
+          "icon": "check-circle",
+          "display_order": 4
+        }
+      }
+    ],
+    "financing_options": [
+      {
+        "id": "financing-1",
+        "slug": "zero-interest",
+        "status": "published",
+        "data": {
+          "name": "0% Interest Financing",
+          "description": "Pay no interest for 12 months on approved credit for projects over $1,000.",
+          "features": ["No interest for 12 months", "Quick approval process", "Flexible payment terms", "Projects over $1,000"],
+          "apr": "0% for 12 months",
+          "terms": "Subject to credit approval. Minimum purchase of $1,000 required. Interest will be charged if balance is not paid in full within 12 months.",
+          "apply_url": "/financing/apply",
+          "is_active": true,
+          "display_order": 1
+        }
+      },
+      {
+        "id": "financing-2",
+        "slug": "extended-payment",
+        "status": "published",
+        "data": {
+          "name": "Extended Payment Plans",
+          "description": "Spread your payments over 24, 36, or 48 months with competitive rates.",
+          "features": ["Terms up to 48 months", "Competitive interest rates", "No prepayment penalties", "Easy online application"],
+          "apr": "Starting at 5.99% APR",
+          "terms": "Subject to credit approval. APR varies based on creditworthiness. Terms from 24 to 48 months available.",
+          "apply_url": "/financing/apply",
+          "is_active": true,
+          "display_order": 2
+        }
+      }
+    ]
+  }
+}
